@@ -1,0 +1,21 @@
+<mat-card>
+    <form [formGroup]="updateCourseForm" (ngSubmit)="onSubmit()">
+
+        <button mat-icon-button (click)="cancel()" class="cancel-button">
+            <mat-icon>cancel</mat-icon>
+        </button>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput id="title" formControlName="title" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput id="description" formControlName="description"></textarea>
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary" type="submit">Edit</button>
+    </form>
+</mat-card>

@@ -1,0 +1,24 @@
+ mat-card {
+  width: 30%;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 30px;
+
+}
+
+form {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cancel-button {
+  margin-left: 90%;
+  margin-bottom: 10px;
+}

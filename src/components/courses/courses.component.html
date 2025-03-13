@@ -1,0 +1,32 @@
+<mat-accordion>
+    @for(course of courses; track course.id) {
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h4 matListItemTitle>{{ course.title }}</h4>
+            </mat-panel-title>
+
+            <button mat-icon-button (click)="enroll(course.id)">
+                <mat-icon>person_add</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="leave(course.id)">
+                <mat-icon>person_remove</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="updateCourse(course.id)">
+                <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="deleteCourse(course.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-expansion-panel-header>
+
+        <app-course-details [courseId]="course.id"></app-course-details>
+
+    </mat-expansion-panel>
+    }
+
+    <button mat-flat-button (click)="addCourse()">Add Course</button>
+</mat-accordion>

@@ -1,0 +1,25 @@
+.center-content {
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  padding: 20px;
+  height: 90vh;
+}
+
+.center-content h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  width: 100%; 
+}
+
+.date-time-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}

@@ -1,0 +1,39 @@
+<mat-card>
+    <form [formGroup]="registerationForm" (ngSubmit)="onSubmit()">
+
+        <button mat-icon-button (click)="cancel()" class="cancel-button">
+            <mat-icon>cancel</mat-icon>
+        </button>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput id="name" formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput id="email" type="email" formControlName="email" />
+            @if(registerationForm.get('email')?.invalid && registerationForm.get('email')?.touched){
+            <mat-error>email is required</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput id="password" type="password" formControlName="password" />
+            @if(registerationForm.get('password')?.invalid && registerationForm.get('password')?.touched){
+            <mat-error>The password must contain at least 6 characters.</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+                <mat-option value="teacher">Teacher</mat-option>
+                <mat-option value="student">Student</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="registerationForm.invalid">Registeration</button>
+    </form>
+</mat-card>

@@ -1,0 +1,20 @@
+<mat-card>
+    <form [formGroup]="addLessonForm" (ngSubmit)="onSubmit()">
+
+        <button mat-icon-button (click)="cancel()" class="cancel-button">
+            <mat-icon>cancel</mat-icon>
+        </button>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput id="title" formControlName="title" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Contant</mat-label>
+            <textarea matInput id="contant" formControlName="contant"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Add</button>
+    </form>
+</mat-card>
