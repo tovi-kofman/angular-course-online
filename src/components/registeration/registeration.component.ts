@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-registeration',
@@ -32,7 +35,7 @@ export class RegisterationComponent implements OnInit {
 
   registerationForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router,@Inject(PLATFORM_ID) private platformId: Object) {
   }
 
   ngOnInit() {
@@ -44,23 +47,42 @@ export class RegisterationComponent implements OnInit {
     })
   }
 
+  // onSubmit() {
+  //   if (this.registerationForm.valid) {
+  //     this.authService.register(this.registerationForm.value).subscribe({
+  //       next: (response) => {
+  //         alert("register succesful")
+  //         localStorage.setItem('authToken', response.token);
+  //         localStorage.setItem('userId', response.userId);
+  //         this.router.navigate(['/login']);
+  //       },
+  //       error: (err) => {
+  //         console.error('Registration failed:', err);
+  //         alert('Registration failed');
+  //       }
+  //     })
+  //   }
+  // }
   onSubmit() {
     if (this.registerationForm.valid) {
       this.authService.register(this.registerationForm.value).subscribe({
         next: (response) => {
-          alert("register succesful")
-          localStorage.setItem('authToken', response.token);
-          localStorage.setItem('userId', response.userId);
+          alert("register successful");
+  
+          if (isPlatformBrowser(this.platformId)) {
+            localStorage.setItem('authToken', response.token);
+            localStorage.setItem('userId', response.userId);
+          }
+  
           this.router.navigate(['/login']);
         },
         error: (err) => {
           console.error('Registration failed:', err);
           alert('Registration failed');
         }
-      })
+      });
     }
   }
-
   cancel() {
     this.router.navigate([`/`]);
   }
